@@ -50,6 +50,18 @@ namespace SimpleHotelManagementSystemOOPTask
             isBooked = false;
         }
 
+
+        // Method to book the room (sets isBooked to true)
+        public void Book()
+        {
+            isBooked = true;
+        }
+
+        // Method to free the room (sets isBooked to false)
+        public void Free()
+        {
+            isBooked = false;
+        }
     }
 
 
