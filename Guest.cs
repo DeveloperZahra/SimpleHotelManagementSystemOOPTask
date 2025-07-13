@@ -6,24 +6,50 @@ using System.Threading.Tasks;
 
 namespace SimpleHotelManagementSystemOOPTask
 {
-    // Class definition for Guest
-    internal class Guest
+    //-------------------- Guest Class ------------------------
+    // Represents a hotel guest with name, ID, and password
+    public class Guest
     {
-        
-        //class Auto-property (get , set)
-        public string Name { get; set; }
-        public int NationalID { get; set; }
-   
+        private string name;
+        private string nationalID;
+        private string password;
 
-    // Constructor... Allows creating a new Guest object and specifying the name and national number directly.
-    public Guest(string name, string nationalId)
+        // Auto-properties with validation
+        public string Name
         {
-            Name = name;
-            NationalID = NationalID;
+            get { return name; }
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value) || value.Length < 3)
+                    throw new ArgumentException("Guest name must be at least 3 characters.");
+                name = value;
+            }
         }
 
 
+        public string NationalID
+        {
+            get { return nationalID; } //Returns the current value of the nationalID.
+            set //It checks that the value is not empty, and then stores it in nationalID.
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("National ID cannot be empty.");
+                nationalID = value;
+            }
+        }
 
+        // Write-only property for password
+        public string Password
+        {
+            set { password = value; }
+        }
+
+        // Constructor
+        public Guest(string name, string nationalID)
+        {
+            Name = name;
+            NationalID = nationalID;
+        }
 
     }
 }
