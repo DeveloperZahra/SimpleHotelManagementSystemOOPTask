@@ -6,62 +6,57 @@ using System.Threading.Tasks;
 
 namespace SimpleHotelManagementSystemOOPTask
 {
-    // Class definition for Room
+    //-------------------- Room Class ------------------------
+    // Represents a hotel room with room number and booking status
     internal class ROOM
     {
         //Fields 
         private int roomNumber;
         private bool isBooked;
+        private static int roomCount = 0; // Static field to track total rooms created
 
-
-        //Constructors 
-        public  ROOM(int Number)
-
+        // Constructor with validation
+        public ROOM(int number)
         {
-            roomNumber = Number;
-            isBooked = false; // // By default, the room is not booked
-
+            if (number < 100)
+                throw new ArgumentException("Room number must be 100 or above.");
+            roomNumber = number;
+            isBooked = false;
+            roomCount++;
         }
 
-        // Property to get the room number (Read-only)
+       
+        // Read-only property to get room number
         public int RoomNumber
         {
             get { return roomNumber; }
         }
 
-        // Property to get whether the room is booked (Read-only)
+        // Read-only property to check if room is booked
         public bool IsBooked
         {
             get { return isBooked; }
-        
         }
 
         // Method to book the room
-
-        public void BookRoom()
-
-        {
-           isBooked = true;
-        }
-
-        // Method to cancel the booking
-        public void CancelBooking()
-        {
-            isBooked = false;
-        }
-
-
-        // Method to book the room (sets isBooked to true)
         public void Book()
         {
             isBooked = true;
         }
 
-        // Method to free the room (sets isBooked to false)
+        // Method to free the room
         public void Free()
         {
             isBooked = false;
         }
+
+        // Static method to get total number of rooms created
+        public static int GetRoomCount()
+        {
+            return roomCount;
+        }
+
+        
     }
 
 
