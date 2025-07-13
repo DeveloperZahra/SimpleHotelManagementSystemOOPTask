@@ -30,7 +30,7 @@ namespace SimpleHotelManagementSystemOOPTask
         }
 
        // ---------------------------------------------------
-        //Not: 📝 Why do we use this format?
+        //Not Why do we use this format?
         //  Because:
        //It prevents the user from entering illogical data, such as a short or blank name.
        //It protects internal data from errors.
